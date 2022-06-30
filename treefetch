@@ -84,6 +84,19 @@ wm="$XDG_CURRENT_DESKTOP"
       -e "xmonad"
   )
 
+#####################
+# Memory
+#####################
+total_mem=$(free -m | grep Mem: | awk '{print $2}')
+mem_used=$(free -m | grep Mem: | awk '{print $3}')
+mem="$mem_used/$total_mem"
+
+#####################
+# Disk
+#####################
+total_disk=$(echo $(df -k --output=size / | tail -n1) / 1048576 | bc)
+disk_used=$(echo $(df -k --output=used / | tail -n1) / 1048576 | bc)
+disk="$disk_used/$total_disk"
 
 #####################
 # Colors
@@ -104,12 +117,16 @@ c9='^[[37m'
 # Art
 #####################
 
-ARTR1="${c1}     _ _    "
-ARTR2="${c1}    (_\_)   "
-ARTR3="${c1}   (__<__)  "
-ARTR4="${c1}    (_/_)   "
-ARTR5="${c2}    \ |     "
-ARTR6="${c2}     \|/    "
+ARTR1="${c2}           _-_       "
+ARTR2="${c2}        /~~   ~~\    "
+ARTR3="${c2}     /~~         ~~\ "
+ARTR4="${c2}    {               }"
+ARTR5="${c2}     \  _-     -_  / "
+ARTR6="${c1}       ~  \\\ //  ~   "
+ARTR7="${c1}    _- -   | | _- _  "
+ARTR8="${c1}      _ -  | |   -_  "
+ARTR9="${c1}          // \\\      "
+
 
 #####################
 # Main Print
@@ -123,5 +140,8 @@ cat <<-EOF
  ${ARTR4}  ${c5}wm${c0}      ${c4}•••   ${wm}
  ${ARTR5}  ${c5}os${c0}      ${c5}•••   ${os}
  ${ARTR6}  ${c5}pkg${c0}     ${c6}•••   ${pkg}
+ ${ARTR7}  ${c5}uptime${c0}  ${c7}•••   ${uptime} 
+ ${ARTR8}  ${c5}mem${c0}     ${c4}•••   ${mem}
+ ${ARTR9}  ${c5}disk${c0}    ${c6}•••   ${disk}
 
 EOF

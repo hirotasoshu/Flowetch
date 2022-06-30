@@ -2,8 +2,8 @@ PREFIX?=/usr
 BIN?=$(PREFIX)/bin
 
 default:
-	@printf "Usage:\n\tmake install\tinstall flowetch\n\tmake uninstall\tuninstall flowetch\n"
+	@printf "Usage:\n\tmake install\tinstall treefetch\n\tmake uninstall\tuninstall treefetch\n"
 install:
-	install -Dm755 flowetch $(BIN)/flowetch
+	install -Dm755 treefetch $(BIN)/treefetch
 uninstall:
-	rm -f $(BIN)/flowetch
+	rm -f $(BIN)/treefetch
