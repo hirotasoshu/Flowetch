@@ -50,21 +50,6 @@ shell="${SHELL##*/}"
 [ "$WAYLAND_DISPLAY" ] && displayprot="wayland"
 [ ! "$displayprot" ] && displayprot="tty"
 
-#####################
-# GTK 3
-#####################
-
-while read -r line; do
-  case $line in
-  gtk-theme*) theme=${line##*=} ;;
-  gtk-icon-theme*) icons=${line##*=} ;;
-  esac
-done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
-
-#####################
-# GTK theme
-#####################
-
 wm="$XDG_CURRENT_DESKTOP"
 [ "$wm" ] || wm="$DESKTOP_SESSION"
 
@@ -99,24 +84,6 @@ wm="$XDG_CURRENT_DESKTOP"
       -e "xmonad"
   )
 
-#####################
-# GTK theme
-#####################
-
-case $wm in
-*GNOME*)
-  theme=$(dconf read /org/gnome/desktop/interface/gtk-theme | tr -d "'")
-  icons=$(dconf read /org/gnome/desktop/interface/icon-theme | tr -d "'")
-  ;;
-*)
-  while read -r line; do
-    case $line in
-    gtk-theme*) theme=${line##*=} ;;
-    gtk-icon-theme*) icons=${line##*=} ;;
-    esac
-  done <"${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
-  ;;
-esac
 
 #####################
 # Colors
@@ -154,7 +121,7 @@ cat <<-EOF
  ${ARTR2}  ${c5}user${c0}    ${c2}•••   ${user}
  ${ARTR3}  ${c5}shell${c0}   ${c3}•••   ${shell}
  ${ARTR4}  ${c5}wm${c0}      ${c4}•••   ${wm}
- ${ARTR5}  ${c5}theme${c0}   ${c5}•••   ${theme}
+ ${ARTR5}  ${c5}os${c0}      ${c5}•••   ${os}
  ${ARTR6}  ${c5}pkg${c0}     ${c6}•••   ${pkg}
 
 EOF
