@@ -5,9 +5,9 @@
 ## 👇 Index
 
 - [👇 Index](#-index)
-- [⚙️ Installation](#-installation)
+- [⚙️ Installation](#️-installation)
 - [🎨 Customization](#-customization)
-  - [🖼️ Art](#-art)
+  - [🖼️ Art](#️-art)
 
 ## ⚙️ Installation
 
