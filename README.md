@@ -1,4 +1,4 @@
-# treefetch
+# catfetch
 
 ![image](assets/header.png)
 
@@ -11,10 +11,10 @@
 
 ## ⚙️ Installation
 
-1. Clone this repo with `git clone https://github.com/hirotasoshu/treefetch.git`
-1. Run `cd treefetch`
+1. Clone this repo with `git clone https://github.com/hirotasoshu/catfetch.git`
+1. Run `cd catfetch`
 1. Run `sudo make install` or `doas make install`
-1. Now you can run it with `treefetch`
+1. Now you can run it with `catfetch`
 
 ## 🎨 Customization
 
@@ -23,14 +23,12 @@ This fetch Is thought to be used as a personal fetch and have your own fork of i
 ### 🖼️ Art
 
 ```shell
-ARTR1="${c2}           _-_       "
-ARTR2="${c2}        /~~   ~~\    "
-ARTR3="${c2}     /~~         ~~\ "
-ARTR4="${c2}    {               }"
-ARTR5="${c2}     \  _-     -_  / "
-ARTR6="${c1}       ~  \\\ //  ~   "
-ARTR7="${c1}    _- -   | | _- _  "
-ARTR8="${c1}      _ -  | |   -_  "
-ARTR9="${c1}          // \\\      "
+ARTR1="${c1}   /\___/\            "
+ARTR2="${c1}  (  o o  )           "
+ARTR3="${c1}  /   *   \           "
+ARTR4="${c1}  \__\_/__/${c2}meow! "
+ARTR5="${c1}    /   \             "
+ARTR6="${c1}   / ___ \            "
+ARTR7="${c1}   \/___\/            "
 
 ```

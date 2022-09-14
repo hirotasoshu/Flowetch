@@ -2,8 +2,8 @@ PREFIX?=/usr
 BIN?=$(PREFIX)/bin
 
 default:
-	@printf "Usage:\n\tmake install\tinstall treefetch\n\tmake uninstall\tuninstall treefetch\n"
+	@printf "Usage:\n\tmake install\tinstall catfetch\n\tmake uninstall\tuninstall catfetch\n"
 install:
-	install -Dm755 treefetch $(BIN)/treefetch
+	install -Dm755 catfetch $(BIN)/catfetch
 uninstall:
-	rm -f $(BIN)/treefetch
+	rm -f $(BIN)/catfetch
