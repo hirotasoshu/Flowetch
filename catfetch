@@ -1,0 +1,126 @@
+#! /bin/sh
+
+#               __    _____       __         .__     
+#   ____ _____ _/  |__/ ____\_____/  |_  ____ |  |__  
+# _/ ___\\__  \\   __\   __\/ __ \   __\/ ___\|  |  \ 
+# \  \___ / __ \|  |  |  | \  ___/|  | \  \___|   Y  \
+#  \___  >____  /__|  |__|  \___  >__|  \___  >___|  /
+#      \/     \/                \/          \/     \/ 
+
+#####################
+# Information
+#####################
+
+
+# Get user
+user="${USER-$(id -u -n)}"
+
+# Get host
+host="$(uname -n)"
+
+# Get OS
+. /etc/os-release
+os="${NAME,}"
+
+# Shell
+shell="${SHELL##*/}"
+
+#get kernel release
+kernel="$(uname -r)"
+
+# get init name
+init() {
+	init=$(readlink /sbin/init)
+	init=${init##*/}
+	init=${init%%-*}
+	export init
+}
+
+init
+
+
+#####################
+# Display protocol
+#####################
+
+[ "$DISPLAY" ] && displayprot="x11"
+[ "$WAYLAND_DISPLAY" ] && displayprot="wayland"
+[ ! "$displayprot" ] && displayprot="tty"
+
+wm="$XDG_CURRENT_DESKTOP"
+[ "$wm" ] || wm="$DESKTOP_SESSION"
+
+#####################
+# Window Manager
+#####################
+
+[ ! "$wm" ] && [ "$DISPLAY" ] && command -v xprop >/dev/null && {
+  id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
+  id=${id##* }
+  wm=$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t |
+    grep '^_NET_WM_NAME' | cut -d\" -f 2)
+}
+
+#####################
+# For non-EWH WMs
+#####################
+
+[ ! "$wm" ] || [ "$wm" = "LG3D" ] &&
+  wm=$(
+    ps -e | grep -m 1 -o \
+      -e "sway" \
+      -e "kiwmi" \
+      -e "wayfire" \
+      -e "sowm" \
+      -e "catwm" \
+      -e "fvwm" \
+      -e "dwm" \
+      -e "2bwm" \
+      -e "monsterwm" \
+      -e "tinywm" \
+      -e "xmonad"
+  )
+
+#####################
+# Colors
+#####################
+
+c0='[0m'
+c1='[31m'
+c2='[32m'
+c3='[33m'
+c4='[34m'
+c5='[35m'
+c6='[36m'
+c7='[37m'
+c8='[38m'
+c9='^[[37m'
+
+palette="[7m$c1 $c1 $c2 $c2 $c3 $c3 $c4 $c4 $c5 $c5 $c6 $c6 [m"
+#####################
+# Art
+#####################
+
+ARTR1="${c1}   /\___/\            "
+ARTR2="${c1}  (  o o  )           "
+ARTR3="${c1}  /   *   \           "
+ARTR4="${c1}  \__\_/__/ ${c2}meow!     "
+ARTR5="${c1}    /   \             "
+ARTR6="${c1}   / ___ \            "
+ARTR7="${c1}   \/___\/            "
+#####################
+# Main Print
+#####################
+
+cat <<-EOF
+
+ ${ARTR1}  ${c5}user${c0}    ${c1}•••   ${user}
+ ${ARTR2}  ${c5}host${c0}    ${c2}•••   ${host}
+ ${ARTR3}  ${c5}os${c0}      ${c3}•••   ${os}
+ ${ARTR4}  ${c5}kernel${c0}  ${c4}•••   ${kernel}
+ ${ARTR5}  ${c5}init${c0}    ${c5}•••   ${init}
+ ${ARTR6}  ${c5}shell${c0}   ${c6}•••   ${shell} 
+ ${ARTR7}  ${c5}wm${c0}      ${c7}•••   ${wm}
+
+                         ${palette}
+EOF
