@@ -100,27 +100,23 @@ palette="[7m$c1 $c1 $c2 $c2 $c3 $c3 $c4 $c4 $c5 $c5 $c6 $c6 [m"
 #####################
 # Art
 #####################
-
-ARTR1="${c1}   /\___/\            "
-ARTR2="${c1}  (  o o  )           "
-ARTR3="${c1}  /   *   \           "
-ARTR4="${c1}  \__\_/__/ ${c2}meow!     "
-ARTR5="${c1}    /   \             "
-ARTR6="${c1}   / ___ \            "
-ARTR7="${c1}   \/___\/            "
+ARTR1="${c1}          "
+ARTR2="${c2} /| ､     "
+ARTR3="${c2}(°､ ｡ 7   "
+ARTR4="${c2} |､  ~ヽ  "
+ARTR5="${c2} じしf_,) "
+ARTR6="${c1}          "
 #####################
 # Main Print
 #####################
 
 cat <<-EOF
 
- ${ARTR1}  ${c5}user${c0}    ${c1}•••   ${user}
- ${ARTR2}  ${c5}host${c0}    ${c2}•••   ${host}
- ${ARTR3}  ${c5}os${c0}      ${c3}•••   ${os}
- ${ARTR4}  ${c5}kernel${c0}  ${c4}•••   ${kernel}
- ${ARTR5}  ${c5}init${c0}    ${c5}•••   ${init}
- ${ARTR6}  ${c5}shell${c0}   ${c6}•••   ${shell} 
- ${ARTR7}  ${c5}wm${c0}      ${c7}•••   ${wm}
+ ${ARTR1}  ${c5}whoami${c0}  ${c1}•••   ${user}@${host}
+ ${ARTR2}  ${c5}os${c0}      ${c2}•••   ${os}
+ ${ARTR3}  ${c5}kernel${c0}  ${c3}•••   ${kernel}
+ ${ARTR4}  ${c5}init${c0}    ${c4}•••   ${init}
+ ${ARTR5}  ${c5}shell${c0}   ${c5}•••   ${shell} 
+ ${ARTR6}  ${c5}wm${c0}      ${c6}•••   ${wm}
 
-                         ${palette}
 EOF
