@@ -23,12 +23,10 @@ This fetch Is thought to be used as a personal fetch and have your own fork of i
 ### 🖼️ Art
 
 ```shell
-ARTR1="${c1}   /\___/\            "
-ARTR2="${c1}  (  o o  )           "
-ARTR3="${c1}  /   *   \           "
-ARTR4="${c1}  \__\_/__/${c2}meow! "
-ARTR5="${c1}    /   \             "
-ARTR6="${c1}   / ___ \            "
-ARTR7="${c1}   \/___\/            "
-
+ARTR1="${c1}          "
+ARTR2="${c2} /| ､     "
+ARTR3="${c2}(°､ ｡ 7   "
+ARTR4="${c2} |､  ~ヽ  "
+ARTR5="${c2} じしf_,) "
+ARTR6="${c1}          "
 ```
